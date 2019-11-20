@@ -1,0 +1,35 @@
+<div class ="LoginMain">
+    <span class="heading">{{count}} Items on your List</span>
+    <div *ngFor="let author of authors" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong class="heading">{{author}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+    <h1 class="heading">Add a Task</h1>
+    <div>
+      <form #taskForm="ngForm" (ngSubmit)="submitTask(taskForm.form);">
+          <input type="text" 
+          class="form-control" 
+          name="task"
+          ngModel
+          #taskField="ngModel"
+          required
+          minlength="3"
+          >
+          <div *ngIf="taskField.touched && taskField.errors">
+              <div class="alert alert-danger" 
+              *ngIf="taskField.errors.required">
+              Task is required
+          </div>
+            <div class="alert alert-danger" 
+                *ngIf="taskField.errors.minlength">
+                The task should be at least 3 characters long
+            </div>
+          </div>
+        <button class="btn btn-primary" [disabled]="!taskForm.valid">Submit</button>
+      </form>
+    </div>
+</div>
+

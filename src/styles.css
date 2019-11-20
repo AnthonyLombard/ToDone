@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+
+.header{
+    width:100%; 
+    background:black;
+    min-height:50px;
+}
+.name{
+    font-family: 'Caveat', cursive;
+    color:#fff;
+    font-size: 40px;
+    margin:0px auto;
+    width:200px;
+    text-align:center;
+}
+.heading{
+    margin:10px;
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+}
