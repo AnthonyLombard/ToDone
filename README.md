@@ -1,6 +1,8 @@
-# AuthorsExerceise
+# ToDOne WebApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
+Created with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
+
+This is a small app to track your todolist on the run, while very much still in development this app is open to PR's and merges if you feel like contributing
 
 ## Development server
 
