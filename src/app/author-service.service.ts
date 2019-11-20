@@ -1,21 +1,28 @@
 import { Injectable } from '@angular/core';
 import { AuthorsComponent } from './authors/authors.component';
+import { HttpClient } from '@angular/common/http';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthorServiceService {
-  getAuthors(){
+  constructor(private _http: HttpClient) {
+  }
+  getTasks(){
     var authors = ["Author 1","Author 2","Author 3","Author 4"]
     return  authors
   }
 
-  countAuthors(){
-    let authors = this.getAuthors();
+  countTasks(){
+    let authors = this.getTasks();
     return authors.length;
   }
 
-  addAuthor(newAuthor){
-    
+  addTask(newTask){
+    console.log(newTask);
+    let url = 'http://localhost:8080/api/addtask';
+    this._http.post(url,newTask)
+    console.log("hello")
   }
+
 }

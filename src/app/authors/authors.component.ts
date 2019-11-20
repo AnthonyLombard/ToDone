@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorServiceService } from '../author-service.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'authors',
@@ -7,15 +8,17 @@ import { AuthorServiceService } from '../author-service.service';
   styleUrls: ['./authors.component.css']
 })
 export class AuthorsComponent  {
-  authors;number
+  tasks;
   count;
-  constructor(service:AuthorServiceService) {
-    this.count = service.countAuthors();
-    this.authors = service.getAuthors();
+  newTask;
+
+  constructor(public service:AuthorServiceService) {
+    this.count = service.countTasks();
+    this.tasks = service.getTasks();
+    
   }
 
   submitTask(form){
-    console.log(form.value);
+    this.service.addTask(form)
   }
-
 }

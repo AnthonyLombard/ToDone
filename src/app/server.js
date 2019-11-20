@@ -36,14 +36,15 @@ var TodoSchema = new Schema({
 var model = mongo.model('Tasks',TodoSchema,'Tasks');
 
 app.post("/api/addtask",function(req,res){
-    var task = new model(req.body)
-    task.save(function(err,data){
-        if(err){
-            res.send({data:err})
-        }else{
-            res.send({data:"success"})
-        }
-    })
+    console.log(req.body);
+    // var task = new model(req.body)
+    // task.save(function(err,data){
+    //     if(err){
+    //         res.send({data:err})
+    //     }else{
+    //         res.send({data:"success"})
+    //     }
+    // })
     
 })
 app.post("/api/getTasks",function(req,res){

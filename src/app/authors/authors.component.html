@@ -1,7 +1,7 @@
 <div class ="LoginMain">
     <span class="heading">{{count}} Items on your List</span>
-    <div *ngFor="let author of authors" class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong class="heading">{{author}}</strong>
+    <div *ngFor="let task of tasks" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong class="heading">{{task}}</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
