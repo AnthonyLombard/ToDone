@@ -19,10 +19,9 @@ app.use(bodyParser.json({limit:'5mb'}));
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(function(req,res,next){
-    res.setHeader('Access-Control-Allow-Origin','http://localhost:4200');
+    res.setHeader('Access-Control-Allow-Origin','*');
     res.setHeader('Access-Control-Allow-Methods','GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers','X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials',true);
     next();
 })
 
@@ -35,21 +34,30 @@ var TodoSchema = new Schema({
 
 var model = mongo.model('Tasks',TodoSchema,'Tasks');
 
-app.post("/api/addtask",function(req,res){
-    console.log(req.body);
-    // var task = new model(req.body)
-    // task.save(function(err,data){
-    //     if(err){
-    //         res.send({data:err})
-    //     }else{
-    //         res.send({data:"success"})
-    //     }
-    // })
-    
-})
-app.post("/api/getTasks",function(req,res){
-    
-})
+    app.post("/api/addtask",function(req,res){
+        console.log(req.body);
+        var task = new model(req.body)
+        task.save(function(err,data){
+            if(err){
+                res.send({data:err})
+            }else{
+                res.send({data:"success"})
+            }
+        })
+    })
+
+      app.get("/api/getTasks",function(req,res){
+        let tasks = []
+         model.find({status:'todo'},function(err,data){
+            
+            data.forEach(element => {
+                tasks.push(element['task']);
+                console.log(tasks);
+                return tasks;
+            });
+            
+        });
+    })
 
     app.listen(8080,function(){
         console.log('Listening on port 8080!')

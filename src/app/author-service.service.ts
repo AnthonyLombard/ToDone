@@ -1,28 +1,42 @@
 import { Injectable } from '@angular/core';
 import { AuthorsComponent } from './authors/authors.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { async } from 'q';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorServiceService {
+
+  tasks;
+
   constructor(private _http: HttpClient) {
   }
-  getTasks(){
-    var authors = ["Author 1","Author 2","Author 3","Author 4"]
-    return  authors
-  }
 
-  countTasks(){
-    let authors = this.getTasks();
-    return authors.length;
+   async getTasks(){
+      let url = 'http://localhost:8080/api/getTasks';
+      const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+      return this._http.get(url,{
+        headers: headers 
+      }).toPromise();
+    };
+
+  countTasks(tasks){
+    return tasks.length;
   }
 
   addTask(newTask){
-    console.log(newTask);
     let url = 'http://localhost:8080/api/addtask';
-    this._http.post(url,newTask)
-    console.log("hello")
+      const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+      let task = newTask.value
+      this._http.post(url, {"task":task['task'],"status":"todo"}, {
+        headers: headers
+      })
+      .subscribe(data => {
+        console.log(data);
+      });
   }
 
 }

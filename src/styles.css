@@ -3,6 +3,7 @@
     width:100%; 
     background:black;
     min-height:50px;
+    text-align: center;
 }
 .name{
     font-family: 'Caveat', cursive;
@@ -16,4 +17,24 @@
     margin:10px;
     font-family: 'Caveat', cursive;
     font-size: 20px;
+    text-align:center;
+}
+.LoginMain{
+    width:100%;
+    height:100%;
+}
+.subButton{
+    background-color:black;
+    border-radius :0px;
+    width:100%;
+    color:#fff;
+    font-family: 'Caveat', cursive;
+    font-size:30px;
+    border:none;
+}
+
+.addDiv{
+    position: absolute;
+    bottom: 0px;
+    width:100%;
 }

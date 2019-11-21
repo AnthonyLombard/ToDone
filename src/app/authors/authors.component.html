@@ -6,29 +6,31 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      
-    <h1 class="heading">Add a Task</h1>
-    <div>
-      <form #taskForm="ngForm" (ngSubmit)="submitTask(taskForm.form);">
+     
+    
+    <div class="addDiv">
+      <h1 class="heading">Add a Task</h1>
+      <form  #taskForm="ngForm" (ngSubmit)="submitTask(taskForm.form);">
           <input type="text" 
           class="form-control" 
-          name="task"
-          ngModel
-          #taskField="ngModel"
-          required
+          name="task"  
+          ngModel  
+          #taskField="ngModel" 
+          required 
           minlength="3"
-          >
-          <div *ngIf="taskField.touched && taskField.errors">
+          > 
+          <div *ngIf="taskField.touched && taskField.errors"> 
               <div class="alert alert-danger" 
               *ngIf="taskField.errors.required">
               Task is required
-          </div>
+          </div>  
             <div class="alert alert-danger" 
                 *ngIf="taskField.errors.minlength">
                 The task should be at least 3 characters long
             </div>
           </div>
-        <button class="btn btn-primary" [disabled]="!taskForm.valid">Submit</button>
+        
+        <button class="subButton" [disabled]="!taskForm.valid">Add Item</button>
       </form>
     </div>
 </div>
